@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Poke Weakness</title>
+  <meta name="description" content="Descubre las debilidades de cualquier Pokémon y el mejor tipo para vencerlo.">
+  <meta name="theme-color" content="#e3350d">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="PokeWeak">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="brand">
+        <img src="icons/icon-192.png" alt="" class="logo">
+        <div class="brand-text">
+          <h1>Poke Weakness</h1>
+          <p>Encuentra el punto débil de cualquier Pokémon</p>
+        </div>
+        <button id="installBtn" class="install" hidden>Instalar</button>
+      </div>
+
+      <form id="searchForm" class="search" autocomplete="off" role="search">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="nameInput" list="pokeList" type="search" placeholder="Busca un Pokémon…" aria-label="Nombre del Pokémon" enterkeyhint="search" autocapitalize="off" spellcheck="false">
+        <button type="submit" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <datalist id="pokeList"></datalist>
+      </form>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>O elige sus tipos <span class="sub">(máx. 2)</span></h2>
+        <button id="clearBtn" class="ghost-btn" type="button" hidden>Limpiar</button>
+      </div>
+      <div id="typePicker" class="type-grid" role="group" aria-label="Tipos"></div>
+    </section>
+
+    <p id="status" class="status" role="status"></p>
+
+    <section id="results" hidden>
+      <div id="pokeHeader" class="poke-card reveal"></div>
+
+      <div class="panel reveal" style="--d:.06s">
+        <h2>Mejor tipo para vencerlo</h2>
+        <p class="hint">Súper eficaces contra él, priorizando los que además aguantan sus ataques.</p>
+        <ol id="bestList" class="best-list"></ol>
+      </div>
+
+      <div class="panel reveal" style="--d:.12s">
+        <h2>Debilidades</h2>
+        <div id="weakGroups"></div>
+      </div>
+
+      <div class="panel reveal" style="--d:.18s">
+        <h2>Resistencias e inmunidades</h2>
+        <div id="resistGroups"></div>
+      </div>
+
+      <div id="abilityNotes" class="panel notes reveal" style="--d:.24s" hidden></div>
+    </section>
+  </main>
+
+  <footer class="foot">Datos vía <a href="https://pokeapi.co" target="_blank" rel="noopener">PokeAPI</a> · Tabla de tipos 6.ª gen. en adelante</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
